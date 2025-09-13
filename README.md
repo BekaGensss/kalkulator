@@ -6,11 +6,13 @@ Kalkulator Universal adalah aplikasi web yang dirancang untuk memenuhi semua keb
 
 ### **✨ Fitur Utama**
 
-* **Mode Kalkulator Ilmiah**: Operasi dasar (+, -, \*, /), fungsi lanjutan (sin, cos, log, $\sqrt{x}$), dan fitur memori (M+, MR).
-* **Mode Programmer**: Konversi antara desimal, biner, oktal, dan heksadesimal, serta operasi bitwise.
-* **Mode Konversi**: Ubah satuan suhu (C/F), massa (kg/g), dan jarak (km/m).
-* **Mode Statistik**: Hitung rata-rata, median, dan deviasi standar dari serangkaian angka.
-* **Mode Finansial**: Hitung bunga, cicilan pinjaman, dan diskon dengan mudah.
+* **Antarmuka Multi-Panel: Akses kalkulator, mode programmer, konversi, dan riwayat secara simultan di layar yang sama.
+* **Kalkulator Ilmiah: Dilengkapi dengan operasi dasar (+, -, *, /) dan fungsi ilmiah (sin, cos, log, dll.).
+* **Mode Programmer: Konversi bilangan (Desimal, Biner, Oktal, Heksadesimal) dan operasi bitwise (LSH, RSH, AND, OR, XOR).
+* **Mode Konversi: Ubah satuan suhu (Suhu), massa (Massa), dan jarak (Jarak) dengan mudah.
+* **Panel Riwayat: Simpan dan tinjau kembali perhitungan Anda di panel samping.
+* **Desain Modern: Tema gelap yang elegan dengan latar belakang partikel dinamis dan tombol toggle mode gelap/terang.
+
 
 ### **🎨 Desain Modern & Interaktif**
 
@@ -43,3 +45,4 @@ Proyek ini tidak memerlukan instalasi yang rumit. Cukup ikuti langkah-langkah be
 ### **📄 Lisensi**
 
 Proyek ini dilisensikan di bawah Lisensi MIT. Lihat file `LICENSE` untuk detailnya.
+
