@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Ilmiah Lengkap</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-button-click-1249.mp3" preload="auto"></audio>
+</head>
+<body class="bg-gray-900 flex justify-center items-center min-h-screen transition-all duration-500">
+
+    <canvas id="particles" class="fixed top-0 left-0 w-full h-full -z-10"></canvas>
+
+    <div class="flex flex-col items-center p-4">
+        <div class="mb-5 flex gap-2">
+            <button id="theme-toggle" class="p-2 rounded-md border-none cursor-pointer transition-colors duration-300">
+                <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 20 20">
+                    <path d="M17.293 13.565A8.995 8.995 0 0110.01 19c-4.996 0-9.04-4.044-9.04-9.04 0-2.454 1.12-4.664 2.894-6.11A6.974 6.974 0 005.01 1c4.015 0 7.283 3.268 7.283 7.283a6.974 6.974 0 00-1.558 4.246 8.995 8.995 0 016.558-1.964z"/>
+                </svg>
+                <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="hidden w-6 h-6" viewBox="0 0 20 20">
+                    <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM10 0a10 10 0 110 20A10 10 0 0110 0zM10 4a6 6 0 100 12A6 6 0 0010 4z"/>
+                </svg>
+            </button>
+            <button id="copy-btn" class="p-2 rounded-md border-none cursor-pointer transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6" viewBox="0 0 24 24">
+                    <path d="M16 1h-12c-1.104 0-2 .896-2 2v14h2v-14h12v-2zm3 4h-10c-1.104 0-2 .896-2 2v14c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2v-14c0-1.104-.896-2-2-2zm0 16h-10v-14h10v14z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-5">
+            <div id="calculator-panel" class="p-5 rounded-xl shadow-lg transition-colors duration-500 flex flex-col justify-between w-full md:w-auto">
+                <div class="display mb-5">
+                    <input type="text" id="result" readonly class="w-full h-14 text-3xl text-right border-none rounded-md px-4 box-border focus:outline-none overflow-x-auto whitespace-nowrap">
+                    <div id="degree-mode" class="text-white text-xs text-right mt-1 hidden">DEG</div>
+                </div>
+
+                <div class="grid grid-cols-5 md:grid-cols-5 gap-2.5">
+                    <button class="btn memory" data-value="MC">MC</button>
+                    <button class="btn memory" data-value="MR">MR</button>
+                    <button class="btn memory" data-value="M+">M+</button>
+                    <button class="btn memory" data-value="M-">M-</button>
+                    <button class="btn clear" data-value="C">C</button>
+        
+                    <button class="btn scientific" data-value="(">(</button>
+                    <button class="btn scientific" data-value=")">)</button>
+                    <button class="btn scientific" data-value="%">%</button>
+                    <button class="btn scientific" data-value="!">n!</button>
+                    <button class="btn backspace" data-value="←">←</button>
+        
+                    <button class="btn number" data-value="7">7</button>
+                    <button class="btn number" data-value="8">8</button>
+                    <button class="btn number" data-value="9">9</button>
+                    <button class="btn operator" data-value="/">/</button>
+                    <button class="btn scientific" data-value="log2">log₂</button>
+
+                    <button class="btn number" data-value="4">4</button>
+                    <button class="btn number" data-value="5">5</button>
+                    <button class="btn number" data-value="6">6</button>
+                    <button class="btn operator" data-value="*">*</button>
+                    <button class="btn scientific" data-value="exp">eˣ</button>
+
+                    <button class="btn number" data-value="1">1</button>
+                    <button class="btn number" data-value="2">2</button>
+                    <button class="btn number" data-value="3">3</button>
+                    <button class="btn operator" data-value="-">-</button>
+                    <button class="btn scientific" data-value="sqrt">√</button>
+
+                    <button class="btn number col-span-2" data-value="0">0</button>
+                    <button class="btn number" data-value=".">.</button>
+                    <button class="btn equals col-span-2" data-value="=">=</button>
+                </div>
+                
+                <div class="flex justify-between mt-4">
+                    <button id="mode-toggle" class="text-center text-sm px-4 py-2 rounded-md transition-colors duration-300">Switch to Radian</button>
+                    <button id="prog-mode-btn" class="text-center text-sm px-4 py-2 rounded-md transition-colors duration-300">Prog Mode</button>
+                    <button id="conv-mode-btn" class="text-center text-sm px-4 py-2 rounded-md transition-colors duration-300">Convert</button>
+                    <button id="hist-mode-btn" class="text-center text-sm px-4 py-2 rounded-md transition-colors duration-300 md:hidden">Riwayat</button>
+                </div>
+            </div>
+
+            <div id="programmer-panel" class="p-5 rounded-xl shadow-lg transition-colors duration-500 hidden w-64 md:block">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-white text-lg font-bold">Programmer</h3>
+                    <button id="back-to-calc" class="text-xs text-gray-400 hover:text-white transition-colors">Kembali</button>
+                </div>
+                <div class="grid grid-cols-3 gap-2.5">
+                    <button class="btn prog-btn" data-value="DEC">DEC</button>
+                    <button class="btn prog-btn" data-value="BIN">BIN</button>
+                    <button class="btn prog-btn" data-value="OCT">OCT</button>
+                    <button class="btn prog-btn col-span-2" data-value="HEX">HEX</button>
+                    <button class="btn prog-btn" data-value="LSH">LSH</button>
+                    <button class="btn prog-btn" data-value="RSH">RSH</button>
+                    <button class="btn prog-btn" data-value="AND">AND</button>
+                    <button class="btn prog-btn" data-value="OR">OR</button>
+                    <button class="btn prog-btn" data-value="XOR">XOR</button>
+                </div>
+            </div>
+
+            <div id="conversion-panel" class="p-5 rounded-xl shadow-lg transition-colors duration-500 hidden w-64 md:block">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-white text-lg font-bold">Konversi</h3>
+                    <button id="back-to-calc-conv" class="text-xs text-gray-400 hover:text-white transition-colors">Kembali</button>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col">
+                        <label for="conv-type" class="text-white mb-2">Jenis Konversi</label>
+                        <select id="conv-type" class="p-2 rounded bg-gray-600 text-white">
+                            <option value="temp">Suhu</option>
+                            <option value="mass">Massa</option>
+                            <option value="length">Jarak</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="conv-input" class="text-white mb-2">Input</label>
+                        <input type="number" id="conv-input" class="p-2 rounded bg-gray-600 text-white" placeholder="Masukkan nilai">
+                    </div>
+                    <div class="flex flex-col">
+                        <label for="conv-output" class="text-white mb-2">Hasil</label>
+                        <input type="text" id="conv-output" readonly class="p-2 rounded bg-gray-600 text-white">
+                    </div>
+                </div>
+            </div>
+
+            <div id="history" class="p-5 rounded-xl shadow-lg transition-colors duration-500 hidden w-64 max-h-96 md:block">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="text-white text-lg font-bold">Riwayat</h3>
+                    <button id="clear-history" class="text-xs text-gray-400 hover:text-white transition-colors">Hapus</button>
+                </div>
+                <div id="history-list" class="flex flex-col-reverse"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

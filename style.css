@@ -1,0 +1,104 @@
+/* style.css */
+
+/* Latar belakang kanvas partikel */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+/* Gaya default untuk mode gelap */
+body {
+    background: linear-gradient(135deg, #1f2937, #111827);
+}
+
+.main-calculator, #programmer-panel, #conversion-panel, #history {
+    background-color: #1f2937;
+}
+
+#theme-toggle, #copy-btn, #mode-toggle, #prog-mode-btn, #conv-mode-btn, #hist-mode-btn {
+    background-color: #374151;
+    color: #f3f4f6;
+}
+
+.main-calculator #result, #programmer-panel input, #conversion-panel input, #conversion-panel select {
+    background-color: #374151;
+    color: #f3f4f6;
+}
+
+.btn {
+    padding: 1rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn.number, .btn.dot { background-color: #374151; color: #f3f4f6; }
+.btn.operator { background-color: #f97316; color: #f3f4f6; }
+.btn.scientific { background-color: #8b5cf6; color: #f3f4f6; }
+.btn.memory { background-color: #4b5563; color: #f3f4f6; }
+.btn.clear, .btn.backspace { background-color: #ef4444; color: #f3f4f6; }
+.btn.equals { background-color: #10b981; color: #f3f4f6; }
+.btn.prog-btn { background-color: #4b5563; color: #f3f4f6; }
+
+/* Hover efek untuk mode gelap */
+.btn.number:hover, .btn.dot:hover { background-color: #4b5563; }
+.btn.operator:hover { background-color: #ea580c; }
+.btn.scientific:hover { background-color: #7c3aed; }
+.btn.memory:hover { background-color: #6b7280; }
+.btn.clear:hover, .btn.backspace:hover { background-color: #dc2626; }
+.btn.equals:hover { background-color: #059669; }
+.btn.prog-btn:hover { background-color: #6b7280; }
+
+#history {
+    background-color: #374151;
+}
+
+/* Gaya untuk mode terang */
+body.light-mode {
+    background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+}
+body.light-mode .main-calculator, body.light-mode #programmer-panel, body.light-mode #conversion-panel, body.light-mode #history { background-color: #f3f4f6; }
+body.light-mode #theme-toggle, body.light-mode #copy-btn, body.light-mode #mode-toggle, body.light-mode #prog-mode-btn, body.light-mode #conv-mode-btn, body.light-mode #hist-mode-btn { background-color: #d1d5db; color: #1f2937; }
+body.light-mode .main-calculator #result, body.light-mode #programmer-panel input, body.light-mode #conversion-panel input, body.light-mode #conversion-panel select { background-color: #e5e7eb; color: #1f2937; }
+body.light-mode #degree-mode { color: #1f2937; }
+
+body.light-mode .btn.number, body.light-mode .btn.dot { background-color: #d1d5db; color: #1f2937; }
+body.light-mode .btn.operator { background-color: #fcd34d; color: #1f2937; }
+body.light-mode .btn.scientific { background-color: #c4b5fd; color: #1f2937; }
+body.light-mode .btn.memory { background-color: #9ca3af; color: #1f2937; }
+body.light-mode .btn.clear, body.light-mode .btn.backspace { background-color: #fca5a5; color: #1f2937; }
+body.light-mode .btn.equals { background-color: #6ee7b7; color: #1f2937; }
+body.light-mode .btn.prog-btn { background-color: #9ca3af; color: #1f2937; }
+
+/* Hover efek untuk mode terang */
+body.light-mode .btn.number:hover, body.light-mode .btn.dot:hover { background-color: #e5e7eb; }
+body.light-mode .btn.operator:hover { background-color: #fbbf24; }
+body.light-mode .btn.scientific:hover { background-color: #a78bfa; }
+body.light-mode .btn.memory:hover { background-color: #b3b9c5; }
+body.light-mode .btn.clear:hover, body.light-mode .btn.backspace:hover { background-color: #f87171; }
+body.light-mode .btn.equals:hover { background-color: #34d399; }
+body.light-mode .btn.prog-btn:hover { background-color: #b3b9c5; }
+
+body.light-mode #history .text-white { color: #1f2937 !important; }
+body.light-mode #history .text-gray-300 { color: #4b5563; }
+body.light-mode #history .text-gray-400 { color: #6b7280; }
+body.light-mode #history .border-gray-600 { border-color: #d1d5db; }
+
+/* Responsif untuk display input agar bisa scroll horizontal */
+#result {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+#result::-webkit-scrollbar {
+    display: none;
+}
