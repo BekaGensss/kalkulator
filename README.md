@@ -40,10 +40,11 @@ Proyek ini tidak memerlukan instalasi yang rumit. Cukup ikuti langkah-langkah be
 
 | Nama | Peran |
 | :--- | :--- |
-| [Bara Kusuma] | Pengembang Utama |
+| Bara Kusuma | Pengembang Utama |
 
 ### **📄 Lisensi**
 
 Proyek ini dilisensikan di bawah Lisensi MIT. Lihat file `LICENSE` untuk detailnya.
+
 
 
